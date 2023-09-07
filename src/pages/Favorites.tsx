@@ -12,26 +12,31 @@ export default function Favorites() {
         {
           favorites.map((favorite: any) => (
             <div className="card" key={ favorite.id }>
-              <h2>{favorite.title}</h2>
-              <img
-                style={ { width: '200px' } }
-                src={ favorite.movie_banner }
-                alt={ favorite.title }
-              />
-              <p>
-                {favorite.description.length > 100
-                  ? `${favorite.description.substring(0, 100)}...`
-                  : favorite.description}
+              <div className="poster">
+                <img
+                  src={ favorite.movie_banner }
+                  alt={ favorite.title }
+                />
 
-              </p>
-              <button
-                onClick={ () => addFavorite(favorite) }
-              >
-                {(favorites.some((fav: any) => fav.id === favorite.id))
-                  ? 'Remover dos favoritos'
-                  : 'Adicionar aos favoritos'}
+              </div>
+              <div className="details">
+                <h2>{favorite.title}</h2>
+                <p>
+                  {favorite.description.length > 100
+                    ? `${favorite.description.substring(0, 100)}...`
+                    : favorite.description}
 
-              </button>
+                </p>
+                <button
+                  onClick={ () => addFavorite(favorite) }
+                >
+                  {(favorites.some((fav: any) => fav.id === favorite.id))
+                    ? 'Remover dos favoritos'
+                    : 'Adicionar aos favoritos'}
+
+                </button>
+
+              </div>
             </div>
           ))
         }
